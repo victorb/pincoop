@@ -1,9 +1,28 @@
 var express = require('express');
 var ipfsAPI = require('ipfs-api')
+var bodyParser = require('body-parser')
+var cors = require('cors')
+var _ = require('underscore')
+var winston = require('winston');
 
-
+var log = new (winston.Logger)({
+	transports: [
+		new (winston.transports.Console)({
+			colorize: true,
+			timestamp: true
+		})
+	]
+});
 
 var app = express();
+app.use(bodyParser.json({limit: '50mb'}))
+app.use(cors());
+
+var Options = {
+	daemon_api_calls_timeout: 5000,
+	daemon_alive_retries: 5,
+	daemon_check_interval: 5000
+}
 
 var Daemon = function(multiaddr) {
 	if(multiaddr === undefined) {
@@ -12,41 +31,73 @@ var Daemon = function(multiaddr) {
 	this.multiaddr = multiaddr
 	this.ipfs = ipfsAPI(this.multiaddr)
 	this.alive = false
+	this.tries = 0
 }
 
 Daemon.prototype = {
 	is_alive: function(callback) {
+		//TODO TIMEOUT HACK AHEAD!
+		//waiting for https://github.com/ipfs/node-ipfs-api/issues/71
+		var interval = setTimeout(() => {
+			this.alive = false
+			this.tries++
+			callback(this.alive)
+		}, Options.daemon_api_calls_timeout)
 		this.ipfs.id(function(err, res) {
+			clearInterval(interval)
 			if(err) {
 				this.alive = false
+				this.tries++
 				callback(this.alive)
 				return
 			}
 			if(res.ID !== undefined) {
 				this.alive = true
+				this.tries = 0
 				callback(this.alive)
+				return
 			}
 		})
 	}
 }
 
-var Deamons = []
+var Daemons = []
 
-var new_daemon = new Daemon('/ip4/127.0.0.1/tcp/5001')
+setInterval(() => {
+	log.info('Checking if daemons are alive')
+	Daemons.forEach((daemon) => {
+		if(daemon.tries >= Options.daemon_alive_retries) {
+			Daemons = _.reject(Daemons, (d) => {
+				return d.multiaddr === daemon.multiaddr
+			})
+		}
+		daemon.is_alive((alive) => {
+			log.info(daemon.multiaddr + ' is alive? ' + alive)
+			daemon.alive = alive
+			if(alive) {
+				daemon.tries = 0
+			}
+		})
+	})
+}, Options.daemon_check_interval)
 
-new_daemon.is_alive(function(alive) {
-	console.log('Is this daemon working?')
-		console.log(alive)
+app.post('/daemons', function (req, res) {
+	const body = req.body
+	var new_daemon = new Daemon(body.multiaddr)
+	Daemons.push(new_daemon)
+	res.send(new_daemon)
+});
+
+app.get('/daemons', function(req, res) {
+	res.send(Daemons)
 })
 
+app.post('/pin/:hash', function(req, res) {
+})
 
-//app.get('/', function (req, res) {
-//  res.send('Hello World!');
-//});
-//
-//var server = app.listen(3000, function () {
-//  var host = server.address().address;
-//  var port = server.address().port;
-//
-//  console.log('Example app listening at http://%s:%s', host, port);
-//});
+var server = app.listen(3000, function () {
+  var host = server.address().address;
+  var port = server.address().port;
+
+  log.info('Example app listening at http://%s:%s', host, port);
+});
