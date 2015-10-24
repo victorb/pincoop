@@ -37,6 +37,22 @@ var Daemon = function(multiaddr) {
 }
 
 Daemon.prototype = {
+	pin_unpinned_hashes: function() {
+		if(this.to_pin.length > 0) {
+			console.log('I have some things to pin!')
+			this.to_pin.forEach((hash_to_pin) => {
+				this.ipfs.pin.add(hash_to_pin, (err, res) => {
+					if(err !== null) throw err
+					if(err === null && res.Pinned) {
+						var pinned_hash = res.Pinned[0]
+						var index_of_hash = this.to_pin.indexOf(pinned_hash)
+						this.to_pin.splice(index_of_hash, 1)
+						this.pinned.push(pinned_hash)
+					}
+				})
+			})
+		}
+	},
 	is_alive: function(callback) {
 		//TODO TIMEOUT HACK AHEAD!
 		//waiting for https://github.com/ipfs/node-ipfs-api/issues/71
@@ -79,6 +95,7 @@ setInterval(() => {
 			daemon.alive = alive
 			if(alive) {
 				daemon.tries = 0
+				daemon.pin_unpinned_hashes()
 			}
 		})
 	})
@@ -102,6 +119,9 @@ app.post('/pin/:hash', (req, res) => {
 		return daemon.alive
 	})
 	log.info('Number of alive daemons to pin on: ' + alive_deamons.length)
+	alive_deamons.forEach((daemon) => {
+		daemon.to_pin = daemon.to_pin.concat([hash])
+	})
 	res.send(JSON.stringify(true))
 })
 
