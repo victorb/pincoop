@@ -24,7 +24,7 @@ var Options = {
 	daemon_check_interval: 5000
 }
 
-var Daemon = (multiaddr) => {
+var Daemon = function(multiaddr) {
 	if(multiaddr === undefined) {
 		throw new Error('You need to define a multiaddr!')
 	}
@@ -37,7 +37,7 @@ var Daemon = (multiaddr) => {
 }
 
 Daemon.prototype = {
-	is_alive: (callback) => {
+	is_alive: function(callback) {
 		//TODO TIMEOUT HACK AHEAD!
 		//waiting for https://github.com/ipfs/node-ipfs-api/issues/71
 		var interval = setTimeout(() => {
