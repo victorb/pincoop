@@ -24,7 +24,7 @@ var Options = {
 	daemon_check_interval: 5000
 }
 
-var Daemon = function(multiaddr) {
+var Daemon = (multiaddr) => {
 	if(multiaddr === undefined) {
 		throw new Error('You need to define a multiaddr!')
 	}
@@ -32,10 +32,12 @@ var Daemon = function(multiaddr) {
 	this.ipfs = ipfsAPI(this.multiaddr)
 	this.alive = false
 	this.tries = 0
+	this.pinned = []
+	this.to_pin = []
 }
 
 Daemon.prototype = {
-	is_alive: function(callback) {
+	is_alive: (callback) => {
 		//TODO TIMEOUT HACK AHEAD!
 		//waiting for https://github.com/ipfs/node-ipfs-api/issues/71
 		var interval = setTimeout(() => {
@@ -60,8 +62,9 @@ Daemon.prototype = {
 		})
 	}
 }
-
-var Daemons = []
+var test_daemon = new Daemon('/ip4/127.0.0.1/tcp/5001')
+test_daemon.to_pin.push('QmXdMvJaRrSTCAcDFMZLUFfm9uGK6Wq7qEVcwbvaQRxq8x')
+var Daemons = [test_daemon]
 
 setInterval(() => {
 	log.info('Checking if daemons are alive')
@@ -81,21 +84,28 @@ setInterval(() => {
 	})
 }, Options.daemon_check_interval)
 
-app.post('/daemons', function (req, res) {
+app.post('/daemons', (req, res) => {
 	const body = req.body
 	var new_daemon = new Daemon(body.multiaddr)
 	Daemons.push(new_daemon)
 	res.send(new_daemon)
 });
 
-app.get('/daemons', function(req, res) {
+app.get('/daemons', (req, res) => {
 	res.send(Daemons)
 })
 
-app.post('/pin/:hash', function(req, res) {
+app.post('/pin/:hash', (req, res) => {
+	const hash = req.params.hash
+	log.info('Gonna pin ' + hash + ' on all hosts')
+	const alive_deamons = _.filter(Daemons, (daemon) => {
+		return daemon.alive
+	})
+	log.info('Number of alive daemons to pin on: ' + alive_deamons.length)
+	res.send(JSON.stringify(true))
 })
 
-var server = app.listen(3000, function () {
+var server = app.listen(3000, () => {
   var host = server.address().address;
   var port = server.address().port;
 
