@@ -8,7 +8,7 @@ class NodesAddView extends React.Component {
 			</div>
 			<div className="content">
 				<div className="form">
-					<label htmlFor="multiaddr">Multiaddr</label>
+					<label htmlFor="multiaddr">Multiaddr:</label>
 					<input type="text"></input>
 					<div className="clearfix"></div>
 				</div>

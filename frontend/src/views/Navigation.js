@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 const routes = {
 	'Pin': '/pin',
@@ -20,7 +21,7 @@ class Navigation extends React.Component {
 			if(is_active) {
 				className = "active"
 			}
-			return <a href={path} className={className} key={path}>{key}</a>
+			return <Link key={path} to={path} className={className}>{key}</Link>
 		})
 		return <div className="navigation">
 			<div className="brand">

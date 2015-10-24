@@ -8,8 +8,8 @@ class PinView extends React.Component {
 			</div>
 			<div className="content">
 				<div className="form">
-					<label htmlFor="hash">Hash</label>
-					<input type="text"></input>
+					<label htmlFor="hash_input">Hash:</label>
+					<input id="hash_input" name="hash_input" type="text"></input>
 					<div className="clearfix"></div>
 				</div>
 				<button>Pin it forever</button>

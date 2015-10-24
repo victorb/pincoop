@@ -1,0 +1,39 @@
+.navigation {
+	width: 100%;
+}
+
+.navigation .brand {
+	width: 100px;
+	float: left;
+	font-family: UbuntuMono-Bold;
+	font-size: 20px;
+	line-height: 20px;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+.navigation .brand a {
+	color: #34495E;
+	text-decoration: none;
+}
+
+.navigation .links {
+	float: right;
+	margin-top: 30px;
+}
+
+.navigation .links a {
+	font-size: 20px;
+	text-decoration: none;
+	color: #34495E;
+	margin-right: 30px;
+}
+
+.navigation .links a.active {
+	font-family: UbuntuMono-Bold;
+	border-bottom: 1px solid #34495E;
+}
+
+.navigation .links a:hover {
+	border-bottom: 1px solid #34495E;
+}
