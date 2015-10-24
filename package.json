@@ -1,0 +1,14 @@
+{
+  "name": "openipfs",
+  "version": "1.0.0",
+  "description": "Share your files with the world, host the world's files",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ipfs"
+  ],
+  "author": "Victor Bjelkholm <victorbjelkholm@gmail.com>",
+  "license": "MIT"
+}
