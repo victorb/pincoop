@@ -10,5 +10,9 @@
     "ipfs"
   ],
   "author": "Victor Bjelkholm <victorbjelkholm@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "ipfs-api": "^2.4.1"
+  }
 }
