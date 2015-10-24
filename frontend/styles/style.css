@@ -1,0 +1,149 @@
+body, html {
+	margin: 0;
+	padding: 0;
+	font-family: UbuntuMono-Regular;
+	color: #34495E;
+	background-color: #ECF0F1;
+}
+
+.scroller {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	bottom: -1px;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.navigation {
+	width: 100%;
+}
+
+.navigation .brand {
+	width: 100px;
+	float: left;
+	font-family: UbuntuMono-Bold;
+	font-size: 20px;
+	line-height: 20px;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+.navigation .brand a {
+	color: #34495E;
+	text-decoration: none;
+}
+
+.navigation .links {
+	float: right;
+	margin-top: 30px;
+}
+
+.navigation .links a {
+	font-size: 20px;
+	text-decoration: none;
+	color: #34495E;
+	margin-right: 30px;
+}
+
+.navigation .links a.active {
+	font-family: UbuntuMono-Bold;
+	border-bottom: 1px solid #34495E;
+}
+
+.navigation .links a:hover {
+	border-bottom: 1px solid #34495E;
+}
+
+
+.wrapper {
+	position: absolute;
+	width: 50%;
+	left: 50%;
+	top: 20%;
+	margin-left: -25%;
+	text-align: center;
+}
+
+.wrapper .content {
+	margin-top: 100px;
+}
+
+.wrapper .form {
+	width: 100%;
+	margin-left: 20.5%;
+}
+
+.content .form label {
+	/* Hash : */
+	font-size: 36px;
+	color: #34495E;
+	line-height: 36px;
+	float: left;
+	width: 100px;
+}
+
+.content .form input {
+	/* Rectangle 1: */
+	background: #FDFDFD;
+	border: 1px solid #979797;
+	height: 36px;
+	width: 300px;
+	float: left;
+}
+
+.content button {
+	border-radius: 3px;
+	font-size: 36px;
+	line-height: 36px;
+	margin-top: 35px;
+	border: 2px solid #3498DB;
+	padding: 30px 96px 30px 96px;
+	background-color: rgba(0,0,0,0);
+	color: #3498DB;
+}
+
+.content button:hover {
+	color: #ECF0F1;
+	background: #3498DB;
+	cursor: pointer;
+	border: 2px solid #3498DB;
+}
+
+.content h6 {
+	font-family: UbuntuMono-Bold;
+	font-size: 30px;
+	line-height: 30px;
+	margin: 0px;
+	margin-top: 50px;
+}
+
+.content.about {
+	font-size: 24px;
+	line-height: 30px;
+	margin-top: 0px;
+	width: 90%;
+	margin-left: 5%;
+}
+
+.notes {
+	font-size: 24px;
+	color: #34495E;
+	line-height: 30px;
+	margin-top: 50px;
+}
+
+.notes h3 {
+	/* Developer?: */
+	font-family: UbuntuMono-Bold;
+	font-size: 24px;
+	color: #34495E;
+	line-height: 30px;
+}
+
+.wrapper a {
+	color: #2980B9;
+	text-decoration: none;
+}
