@@ -8,7 +8,7 @@ ADD_IN_OPENIPFS=$1
 MULTIADDRS=();
 
 # Number of nodes
-for NUM in {1..30}
+for NUM in {1..10}
 do
 	echo "Starting container #$NUM"
 	CONTAINER_ID=$(docker run --name "ipfs_cluster_instance_$NUM" -d eris/ipfs)

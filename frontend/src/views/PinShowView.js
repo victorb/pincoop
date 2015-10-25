@@ -30,7 +30,6 @@ class PinShowView extends React.Component {
 		let pinned = []
 		let pinning = []
 
-
 		this.state.nodes.forEach((node) => {
 			node.pinned.forEach((hash) => {
 				if(hash === this.props.params.hash) {
@@ -74,6 +73,12 @@ class PinShowView extends React.Component {
 		}
 		let to_render = <div>
 			<h1>Status of pinning</h1>
+			<p>
+				<span className="bold">Summary</span><br/>
+				Not pinned: [{not_pinned.length}]<br/>
+				Pinning: [{pinning.length}]<br/>
+				Pinned: [{pinned.length}]<br/>
+			</p>
 			<h3>Nodes that have not pinned your content yet</h3>
 			{not_pinned_render}
 			<h3>Nodes that are currently pinning</h3>
