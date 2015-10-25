@@ -1,4 +1,5 @@
 import React from 'react'
+import Nodes from '../components/nodes'
 
 class NodesView extends React.Component {
 	render() {
@@ -7,7 +8,7 @@ class NodesView extends React.Component {
 				<h1>A live view of all nodes<br/>currently in the network</h1>
 			</div>
 			<div className="content">
-				List of all nodes with live status...
+				<Nodes/>
 			</div>
 		</div>
 	}
