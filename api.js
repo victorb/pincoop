@@ -17,7 +17,7 @@ var bootstrap = [
 	'/ip4/128.199.46.197/tcp/5001'
 ]
 
-Updater.setDaemons(bootstrap.map((multiaddr) => {
+Updater.addDaemons(bootstrap.map((multiaddr) => {
 	return new Daemon(multiaddr)
 }))
 
