@@ -10,7 +10,8 @@ module.exports = function(Updater) {
 			func: (req, res) => {
 				const body = req.body
 				var new_daemon = new Daemon(body.multiaddr)
-				Daemons.push(new_daemon)
+				Updater.daemons.push(new_daemon)
+				// TODO send back id?
 				res.send(new_daemon)
 			}
 		},
@@ -18,6 +19,9 @@ module.exports = function(Updater) {
 			method: 'get',
 			path: '/daemons',
 			func: (req, res) => {
+				const daemons = Updater.daemons.map((daemon) => {
+					return daemon
+				})
 				res.send(Updater.daemons)
 			}
 		},
@@ -27,12 +31,13 @@ module.exports = function(Updater) {
 			func: (req, res) => {
 				const hash = req.params.hash
 				Log.info('Gonna pin ' + hash + ' on all hosts')
-				const alive_deamons = _.filter(Updater.daemons, (daemon) => {
-					return daemon.alive
-				})
-				Log.info('Number of alive daemons to pin on: ' + alive_deamons.length)
-				alive_deamons.forEach((daemon) => {
-					daemon.to_pin = daemon.to_pin.concat([hash])
+				Log.info('Number of daemons to pin on: ' + Updater.daemons.length)
+				Updater.daemons = Updater.daemons.map((daemon) => {
+					if(daemon.pinned.indexOf(hash) === -1) {
+						daemon.to_pin = _.uniq(daemon.to_pin.concat([hash]))
+						daemon.pinned = _.uniq(daemon.pinned)
+					}
+					return daemon;
 				})
 				res.send(JSON.stringify(true))
 			}
