@@ -19,15 +19,29 @@ class Stats extends React.Component {
 			pinning_content = pinning_content + node.pinning.length
 			content_to_pin = content_to_pin + node.to_pin.length
 		})
-		return <div>
-			<p>
-				<span className="bold">Summary:</span><br/>
-				Alive nodes: [{alive_nodes}]<br/>
-				Pinned: [{pinned_content}]<br/>
-				Pinning: [{pinning_content}]<br/>
-				To pin: [{content_to_pin}]<br/>
-			</p>
-			<br/>
+		let column_style = {
+			width: '25%',
+			float: 'left'
+		}
+		let column_header_style = {
+			...column_style,
+			fontWeight: 'bold'
+		}
+		return <div style={{width: '50%', marginLeft: '25%', marginBottom: '2em'}}>
+				<h3 className="bold">Summary</h3>
+				<div>
+					<div style={column_header_style}>Alive Nodes</div>
+					<div style={column_header_style}>Pinned</div>
+					<div style={column_header_style}>Pinning</div>
+					<div style={column_header_style}>To Pin</div>
+				</div>
+				<div>
+					<div style={column_style}>{alive_nodes}</div>
+					<div style={column_style}>{pinned_content}</div>
+					<div style={column_style}>{pinning_content}</div>
+					<div style={column_style}>{content_to_pin}</div>
+				</div>
+			<div className="clearfix"></div>
 		</div>
 	}
 }
@@ -126,6 +140,7 @@ class Nodes extends React.Component {
 		})
 		return <div>
 			<Stats nodes={this.state.nodes}/>
+			<h3 className="bold">Node details</h3>
 			<div className="nodes">
 				<div className="column header">
 					ID

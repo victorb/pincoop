@@ -7,9 +7,6 @@ echo "Checking if there is any old containers to remove..."
 
 echo "Starting cluster of containers..."
 
-ADD_IN_OPENIPFS=$1
-
-
 MULTIADDRS=();
 
 # Number of nodes
@@ -31,16 +28,9 @@ do
 	echo "#$NUM have multiaddr $MULTIADDR"
 	MULTIADDRS=("${MULTIADDRS[@]}" "$MULTIADDR")
 
-	if [ ! -z $ADD_IN_OPENIPFS ] 
-	then 
-		echo "Adding $MULTIADDR to OpenIPFS"
-			curl -X POST --silent localhost:3001/api/daemons -H "Content-Type: application/json" --data '{"multiaddr":"'$MULTIADDR'"}' > /dev/null
-	fi
-	# sleep 10
-	# echo "Killing #$NUM"
-	# docker kill $CONTAINER_ID
+	echo "Adding $MULTIADDR to OpenIPFS"
+	curl -X POST --silent localhost:3001/api/daemons -H "Content-Type: application/json" --data '{"multiaddr":"'$MULTIADDR'"}' > /dev/null
+	sleep 1
 done
 
-echo "### ALL CONTAINERS:"
-echo ${MULTIADDRS[@]}
-
+echo "## ALL DONE!"
