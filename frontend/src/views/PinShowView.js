@@ -25,6 +25,7 @@ class PinShowView extends React.Component {
 	render() {
 		let not_pinned = []
 		let pinned = []
+		let pinning = []
 
 
 		this.state.nodes.forEach((node) => {
@@ -38,9 +39,15 @@ class PinShowView extends React.Component {
 					not_pinned.push(node)
 				}
 			})
+			node.pinning.forEach((hash) => {
+				if(hash === this.props.params.hash) {
+					pinning.push(node)
+				}
+			})
 		})
 		let pinned_render;
 		let not_pinned_render;
+		let pinning_render;
 		if(pinned.length > 0) {
 			pinned_render = pinned.map((node) => {
 					return <div className='green'>{node.id}</div>
@@ -55,10 +62,19 @@ class PinShowView extends React.Component {
 		} else {
 			not_pinned_render = <div className='green'>Everyone already pinned your content!</div>
 		}
+		if(pinning.length > 0) {
+			pinning_render = pinning.map((node) => {
+				return <div className='orange'>{node.id}</div>
+			})
+		} else {
+			pinning_render = <div>No pinning is currently in progress</div>
+		}
 		let to_render = <div>
 			<h1>Status of pinning</h1>
 			<h3>Nodes that have not pinned your content yet</h3>
 			{not_pinned_render}
+			<h3>Nodes that are currently pinning</h3>
+			{pinning_render}
 			<h3>Nodes that have pinned!</h3>
 			{pinned_render}
 			<br/>
@@ -70,7 +86,7 @@ class PinShowView extends React.Component {
 		</div>
 
 		let warning = ""
-		if(pinned.length === 0 && not_pinned.length === 0) {
+		if(pinned.length === 0 && not_pinned.length === 0 && pinning.length === 0) {
 			warning = <div>
 				<h2 className="red">No one have pinned this hash<br/>or is trying to pin it...</h2>
 				<p>

@@ -10,8 +10,9 @@ var Daemon = function(multiaddr) {
 	this.ipfs = ipfsAPI(this.multiaddr)
 	this.alive = false
 	this.tries = 0
-	this.pinned = [] // already pinned
-	// while pinning
+	// TODO hashes => model with state machine
+	this.pinned = []   // already pinned
+	this.pinning = [] // while pinning
 	this.to_pin = [] // to be pinned
 }
 
@@ -19,12 +20,19 @@ Daemon.prototype = {
 	pin_unpinned_hashes: function() {
 		if(this.to_pin.length > 0) {
 			this.to_pin.forEach((hash_to_pin) => {
+				const index_of_hash = this.to_pin.indexOf(hash_to_pin)
+				const hash_currently_pinning = this.to_pin.splice(index_of_hash, 1)[0]
+				
+				this.pinning.push(hash_currently_pinning);
+
 				this.ipfs.pin.add(hash_to_pin, (err, res) => {
-					if(err !== null) throw err
+					if(err !== null) {
+						throw err
+					}
 					if(err === null && res.Pinned) {
 						var pinned_hash = res.Pinned[0]
-						var index_of_hash = this.to_pin.indexOf(pinned_hash)
-						this.to_pin.splice(index_of_hash, 1)
+						const index_of_pinned_hash = this.pinning.indexOf(pinned_hash)
+						this.pinning.splice(index_of_pinned_hash, 1)
 						this.pinned.push(pinned_hash)
 					}
 				})

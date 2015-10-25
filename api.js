@@ -12,10 +12,14 @@ var app = express();
 app.use(bodyParser.json())
 app.use(cors());
 
-var test_daemon = new Daemon('/ip4/127.0.0.1/tcp/5001')
-test_daemon.to_pin.push('QmXdMvJaRrSTCAcDFMZLUFfm9uGK6Wq7qEVcwbvaQRxq8x')
+var bootstrap = [
+	'/ip4/127.0.0.1/tcp/5001',
+	'/ip4/128.199.46.197/tcp/5001'
+]
 
-Updater.setDaemons([test_daemon])
+Updater.setDaemons(bootstrap.map((multiaddr) => {
+	return new Daemon(multiaddr)
+}))
 
 Updater.start()
 
