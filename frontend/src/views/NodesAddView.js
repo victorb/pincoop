@@ -34,10 +34,12 @@ class NodesAddView extends React.Component {
 			<div className="content">
 				<div className="form">
 					<label htmlFor="multiaddr">Multiaddr:</label>
-					<input type="text"></input>
+
+					<input type="text" value={this.state.multiaddr} onChange={this.handleOnChange.bind(this)}></input>
+
 					<div className="clearfix"></div>
 				</div>
-				<button>Add</button>
+				<button onClick={this.handleOnClick.bind(this)}>Add</button>
 			</div>
 			<div className="notes">
 				<h3>How to setup?</h3>
