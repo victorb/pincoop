@@ -1,0 +1,29 @@
+.nodes .column {
+  width: 20%;
+  float: left;
+  text-align: center;
+}
+
+.nodes .column.header {
+	font-family: UbuntuMono-Bold;
+}
+
+.node {
+	border-top: 1px solid rgba(200, 200, 200, 1)
+}
+
+.green {
+	color: #27AE60;
+}
+
+.red {
+	color: #C0392B;
+}
+
+.orange {
+	color: #F39C12;
+}
+
+.bold {
+	font-family: UbuntuMono-Bold;
+}
