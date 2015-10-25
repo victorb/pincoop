@@ -16,6 +16,25 @@ I hope that we can share more resources with each others.
 
 All in a very open and introspectively way.
 
+### Screenshots
+
+Some screenshots on how it looks currently
+
+##### Homepage
+![Homepage](http://i.imgur.com/amwccoW.png)
+
+##### Pinning content
+![Pinning content](http://i.imgur.com/naZTfK7.png)
+
+##### Live nodes
+![Live nodes](http://i.imgur.com/KDcfO4M.png)
+
+##### Adding a node
+![Adding a node](http://i.imgur.com/zY4Edbe.png)
+
+##### About
+![About](http://i.imgur.com/ADcHfDF.png)
+
 ### Endpoints
 
 `GET /daemons`
