@@ -6,17 +6,18 @@ var Daemon = function(multiaddr) {
 		throw new Error('You need to define a multiaddr!')
 	}
 	this.multiaddr = multiaddr
+	this.id = "XXXXXXXXXXXXXXXX"
 	this.ipfs = ipfsAPI(this.multiaddr)
 	this.alive = false
 	this.tries = 0
-	this.pinned = []
-	this.to_pin = []
+	this.pinned = [] // already pinned
+	// while pinning
+	this.to_pin = [] // to be pinned
 }
 
 Daemon.prototype = {
 	pin_unpinned_hashes: function() {
 		if(this.to_pin.length > 0) {
-			console.log('I have some things to pin!')
 			this.to_pin.forEach((hash_to_pin) => {
 				this.ipfs.pin.add(hash_to_pin, (err, res) => {
 					if(err !== null) throw err
@@ -42,13 +43,14 @@ Daemon.prototype = {
 			if(err) {
 				this.alive = false
 				this.tries++
-				callback(this.alive)
+				callback(this.alive, this.id)
 				return
 			}
 			if(res.ID !== undefined) {
 				this.alive = true
+				this.id = res.ID
 				this.tries = 0
-				callback(this.alive)
+				callback(this.alive, this.id)
 				return
 			}
 		})
