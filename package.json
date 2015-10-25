@@ -5,10 +5,10 @@
   "main": "api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"api": "node server.js",
-		"frontend:compile": "cd frontend;npm run compile",
-		"frontend:clear:cache": "rm -r frontend/dist",
-		"start": "npm run frontend:clear:cache;npm run frontend:compile;npm run api"
+    "api": "node server.js",
+    "frontend:compile": "cd frontend;npm run compile",
+    "frontend:clear:cache": "rm -r frontend/dist",
+    "start": "npm run frontend:clear:cache;npm run frontend:compile;npm run api"
   },
   "keywords": [
     "ipfs"
@@ -35,7 +35,7 @@
     "react-hot-loader": "^1.3.0",
     "react-redux": "^4.0.0",
     "react-router": "^1.0.0-rc3",
-    "react-tools": "^0.13.3",
+    "react-tools": "^0.10.0",
     "react-transform": "0.0.3",
     "redux": "^3.0.4",
     "redux-devtools": "^2.1.5",
