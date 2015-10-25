@@ -1,4 +1,9 @@
 #! /bin/bash
+set -e
+
+echo "Checking if there is any old containers to remove..."
+
+./stop_cluster.sh
 
 echo "Starting cluster of containers..."
 

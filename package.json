@@ -24,7 +24,7 @@
     "express": "^4.13.3",
     "flat-file-db": "^0.1.5",
     "html-webpack-plugin": "^1.6.2",
-    "ipfs-api": "git://github.com/VictorBjelkholm/node-ipfs-api.git#hack-id-multiple-clients",
+    "ipfs-api": "git://github.com/ipfs/node-ipfs-api.git#solid-tests",
     "lodash": "^3.10.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",

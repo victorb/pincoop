@@ -6,7 +6,7 @@ var Daemon = function(multiaddr) {
 		throw new Error('You need to define a multiaddr!')
 	}
 	this.multiaddr = multiaddr
-	this.id = "XXXXXXXXXXXXXXXX"
+	this.id = "NotYetFound"
 	this.ipfs = ipfsAPI(this.multiaddr)
 	this.alive = false
 	this.tries = 0
@@ -51,7 +51,7 @@ Daemon.prototype = {
 			if(err) {
 				this.alive = false
 				this.tries++
-				callback(this.alive, this.id)
+				callback(this.alive, "NotYetFound")
 				return
 			}
 			if(res.ID !== undefined) {
