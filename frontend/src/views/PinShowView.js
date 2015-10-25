@@ -22,6 +22,9 @@ class PinShowView extends React.Component {
 		this.getNodes()
 		this.setState({interval})
 	}
+	componentWillUnmount() {
+		clearInterval(this.state.interval)
+	}
 	render() {
 		let not_pinned = []
 		let pinned = []
