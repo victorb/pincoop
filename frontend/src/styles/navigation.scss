@@ -5,7 +5,7 @@
 .navigation .brand {
 	width: 100px;
 	float: left;
-	font-family: UbuntuMono-Bold;
+	font-weight: bold;
 	font-size: 20px;
 	line-height: 20px;
 	margin-top: 30px;
@@ -30,7 +30,7 @@
 }
 
 .navigation .links a.active {
-	font-family: UbuntuMono-Bold;
+	font-weight: bold;
 	border-bottom: 1px solid #34495E;
 }
 

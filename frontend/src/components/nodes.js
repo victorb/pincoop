@@ -51,6 +51,7 @@ class Node extends React.Component {
 			<div className={to_pin_classname}>
 				{to_pin}
 			</div>
+			<div className="clearfix"/>
 		</div>
 	}
 }

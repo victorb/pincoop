@@ -1,3 +1,7 @@
+.nodes {
+	padding-bottom: 50px;
+}
+
 .nodes .column {
   width: 20%;
   float: left;
@@ -5,7 +9,7 @@
 }
 
 .nodes .column.header {
-	font-family: UbuntuMono-Bold;
+	font-weight: bold;
 }
 
 .node {
@@ -25,5 +29,5 @@
 }
 
 .bold {
-	font-family: UbuntuMono-Bold;
+	font-weight: bold;
 }
