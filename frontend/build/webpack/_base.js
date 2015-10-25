@@ -27,7 +27,10 @@ const webpackConfig = {
       hash     : true,
       filename : 'index.html',
       inject   : 'body'
-    })
+    }),
+		new webpack.ProvidePlugin({
+			'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+		})
   ],
   resolve : {
     extensions : ['', '.js', '.jsx'],
