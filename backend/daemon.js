@@ -40,13 +40,6 @@ Daemon.prototype = {
 		}
 	},
 	is_alive: function(callback) {
-		//TODO TIMEOUT HACK AHEAD!
-		//waiting for https://github.com/ipfs/node-ipfs-api/issues/71
-		//var interval = setTimeout(() => {
-		//	this.alive = false
-		//	this.tries++
-		//	callback(this.alive)
-		//}, Options.daemon_api_calls_timeout)
 		this.ipfs.id(function(err, res) {
 			if(err) {
 				this.alive = false
