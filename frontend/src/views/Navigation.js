@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 
 const routes = {
-	'Pin': '/pin',
+	'Pin': '/pins',
 	'Nodes': '/nodes',
 	'Add your node': '/nodes/add',
 	'About': '/about',
@@ -25,7 +25,7 @@ class Navigation extends React.Component {
 		})
 		return <div className="navigation">
 			<div className="brand">
-				<a href="/pin">OpenIPFS</a>
+				<a href="/pins">OpenIPFS</a>
 			</div>
 			<div className="links">
 				{links}
