@@ -20,7 +20,7 @@ class PinView extends React.Component {
 	handleOnClick() {
 		const hash = this.state.hash
 		this.setState({hash: null})
-		fetch('http://localhost:3001/api/pin/' + hash, {method: 'POST'})
+		fetch('/api/pin/' + hash, {method: 'POST'})
 		.then(() => {
 			this.props.history.replaceState(null, '/pins/'+hash)
 		})

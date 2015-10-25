@@ -11,6 +11,18 @@ var Routes = require('./backend/routes')(Updater)
 var app = express();
 app.use(bodyParser.json())
 app.use(cors());
+if(process.env.STATIC) {
+	Log.info('Servering static content from frontend/dist')
+	app.use(express.static('frontend/dist'))
+}
+
+app.use(function (req, res, next) {
+		var originalUrl = req.originalUrl
+    if (originalUrl.indexOf('/api/') !== -1) {
+			return next();
+		}
+		res.sendFile(__dirname + '/frontend/dist/index.html');
+})
 
 var bootstrap = [
 	'/ip4/127.0.0.1/tcp/5001',
@@ -27,7 +39,9 @@ Routes.forEach((route) => {
 	app[route.method]('/api' + route.path, route.func)
 })
 
-var server = app.listen(3001, () => {
+
+const PORT = process.env.PORT || 3000
+var server = app.listen(PORT, () => {
   var host = server.address().address;
   var port = server.address().port;
 

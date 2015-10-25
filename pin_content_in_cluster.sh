@@ -17,7 +17,7 @@ TO_PIN[10]="QmSR7ELqgrwQEWkmDFLjeeMeZBcRpzV7K8G1j9yvJnWyH9"
 
 for i in ${TO_PIN[@]}; do
 	echo "Pinning $i"
-	curl --silent -X POST http://localhost:3001/api/pin/$i > /dev/null
+	curl --silent -X POST http://localhost:3000/api/pin/$i > /dev/null
 	sleep 0.3
 done
 

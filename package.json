@@ -4,7 +4,11 @@
   "description": "Share your files with the world, host the world's files",
   "main": "api.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"api": "node server.js",
+		"frontend:compile": "cd frontend;npm run compile",
+		"frontend:clear:cache": "rm -r frontend/dist",
+		"start": "npm run frontend:clear:cache;npm run frontend:compile;npm run api"
   },
   "keywords": [
     "ipfs"

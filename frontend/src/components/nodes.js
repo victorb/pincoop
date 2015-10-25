@@ -111,7 +111,7 @@ class Nodes extends React.Component {
 		}
 	}
 	getNodes() {
-		fetch('http://localhost:3001/api/daemons').then((res) => {
+		fetch('/api/daemons').then((res) => {
 			return res.json()
 		}).then((nodes) => {
 			this.setState({nodes})

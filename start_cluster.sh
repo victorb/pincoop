@@ -29,7 +29,7 @@ do
 	MULTIADDRS=("${MULTIADDRS[@]}" "$MULTIADDR")
 
 	echo "Adding $MULTIADDR to OpenIPFS"
-	curl -X POST --silent localhost:3001/api/daemons -H "Content-Type: application/json" --data '{"multiaddr":"'$MULTIADDR'"}' > /dev/null
+	curl -X POST --silent localhost:3000/api/daemons -H "Content-Type: application/json" --data '{"multiaddr":"'$MULTIADDR'"}' > /dev/null
 	sleep 1
 done
 

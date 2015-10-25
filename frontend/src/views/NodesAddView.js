@@ -16,7 +16,7 @@ class NodesAddView extends React.Component {
 		this.setState({multiaddr: null})
 		const body = {multiaddr}
 
-		fetch('http://localhost:3001/api/daemons', {
+		fetch('/api/daemons', {
 			method: 'POST',
 			body: JSON.stringify(body),
 			headers: {
