@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser')
 var cors = require('cors')
+var proxy = require('express-http-proxy');
 
 var Daemon = require('./backend/daemon')
 var Log = require('./backend/log')
@@ -16,13 +17,21 @@ if(process.env.STATIC) {
 	app.use(express.static('frontend/dist'))
 }
 
-app.use(function (req, res, next) {
-		var originalUrl = req.originalUrl
-    if (originalUrl.indexOf('/api/') !== -1) {
-			return next();
+if(!process.env.DEV) {
+	app.use(function (req, res, next) {
+			var originalUrl = req.originalUrl
+			if (originalUrl.indexOf('/api/') !== -1) {
+				return next();
+			}
+			res.sendFile(__dirname + '/frontend/dist/index.html');
+	})
+} else {
+	app.use('/', proxy('http://localhost:3001', {
+		forwardPath: function(req, res) {
+			return require('url').parse(req.url).path;
 		}
-		res.sendFile(__dirname + '/frontend/dist/index.html');
-})
+	}));
+}
 
 var bootstrap = [
 	'/ip4/127.0.0.1/tcp/5001',

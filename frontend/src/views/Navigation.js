@@ -26,6 +26,7 @@ class Navigation extends React.Component {
 		return <div className="navigation">
 			<div className="brand">
 				<a href="/pins">OpenIPFS</a>
+				<span className="beta">BETA</span>
 			</div>
 			<div className="links">
 				{links}
