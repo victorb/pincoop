@@ -9,7 +9,7 @@ class PinShowView extends React.Component {
 		}
 	}
 	getNodes() {
-		fetch('/api/daemons').then((res) => {
+		fetch(process.env.API + 'api/daemons').then((res) => {
 			return res.json()
 		}).then((nodes) => {
 			this.setState({nodes})

@@ -1,39 +1,39 @@
-import React        from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
-import routes       from '../routes';
-import { createDevToolsWindow } from '../utils';
-import { DevTools, LogMonitor, DebugPanel } from 'redux-devtools/lib/react';
+import routes from '../routes';
+// import { createDevToolsWindow } from '../utils';
+// import { DevTools, LogMonitor, DebugPanel } from 'redux-devtools/lib/react';
 import { ReduxRouter } from 'redux-router';
 
 export default class Root extends React.Component {
   static propTypes = {
-    store         : React.PropTypes.object.isRequired,
-    debug         : React.PropTypes.bool,
-    debugExternal : React.PropTypes.bool
+    debug: React.PropTypes.bool,
+    debugExternal: React.PropTypes.bool,
+    store: React.PropTypes.object.isRequired
   }
 
   constructor () {
     super();
   }
 
-  renderDevTools () {
-    if (!this.props.debug) {
-      return null;
-    }
+  // renderDevTools () {
+  //   if (!this.props.debug) {
+  //     return null;
+  //   }
 
-    if (this.props.debugExternal) {
-      createDevToolsWindow(this.props.store);
-      return null;
-    }
+  //   if (this.props.debugExternal) {
+  //     createDevToolsWindow(this.props.store);
+  //     return null;
+  //   }
 
-    return (
-      <DebugPanel top right bottom key='debugPanel'>
-        <DevTools store={this.props.store} monitor={LogMonitor} />
-      </DebugPanel>
-    );
-  }
+  //   return (
+  //     <DebugPanel top right bottom key='debugPanel'>
+  //       <DevTools store={this.props.store} monitor={LogMonitor} />
+  //     </DebugPanel>
+  //   );
+  // }
+	// {this.renderDevTools()}
 
-	//{this.renderDevTools()}
   render () {
     return (
       <div>

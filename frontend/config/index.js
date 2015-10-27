@@ -40,9 +40,11 @@ Edit at Your Own Risk
 // Environment
 // ------------------------------------
 config.set('env', process.env.NODE_ENV);
+config.set('api_path', process.env.API_PATH);
 config.set('globals', {
   'process.env'  : {
-    'NODE_ENV' : JSON.stringify(config.get('env'))
+    'NODE_ENV' : JSON.stringify(config.get('env')),
+    'API_PATH' : JSON.stringify(config.get('api_path'))
   },
   'NODE_ENV'     : config.get('env'),
   '__DEV__'      : config.get('env') === 'development',

@@ -21,6 +21,12 @@ const webpackConfig = {
   plugins : [
     new webpack.DefinePlugin(config.get('globals')),
     new webpack.optimize.OccurrenceOrderPlugin(),
+	new webpack.DefinePlugin({
+      'process.env': Object.keys(process.env).reduce(function(o, k) {
+        o[k] = JSON.stringify(process.env[k]);
+        return o;
+      }, {})
+    }),
     new webpack.optimize.DedupePlugin(),
     new HtmlWebpackPlugin({
       template : paths.src('index.html'),
@@ -28,9 +34,9 @@ const webpackConfig = {
       filename : 'index.html',
       inject   : 'body'
     }),
-		new webpack.ProvidePlugin({
-			'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
-		})
+	new webpack.ProvidePlugin({
+		'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+	})
   ],
   resolve : {
     extensions : ['', '.js', '.jsx'],

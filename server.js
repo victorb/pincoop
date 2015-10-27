@@ -25,12 +25,6 @@ if(!process.env.DEV) {
 			}
 			res.sendFile(__dirname + '/frontend/dist/index.html');
 	})
-} else {
-	app.use('/', proxy('http://localhost:3001', {
-		forwardPath: function(req, res) {
-			return require('url').parse(req.url).path;
-		}
-	}));
 }
 
 var bootstrap = [
