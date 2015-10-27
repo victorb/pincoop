@@ -1,20 +1,36 @@
 ## OpenIPFS
 
+DISCLAIMER: This project is in Beta stage and hugely unstable. Installation
+without docker is not guaranteed to succeed. Use at your own risk
+
 ### Introduction
 
-OpenIPFS is a set of API endpoints for adding public daemons, retrieve a list
-of all of them and to add hashes to be pinned on those public daemons
+OpenIPFS is a set of API endpoints and WebUI for adding public daemons, retrieve a list
+of all of them and to add hashes to be pinned on those public daemons.
 
 ### Goal
 
-The goal is to provide a starting point for openly share objects of interest,
+The goal is to provide a starting point for openly share hashes of interest,
 on a large set of open daemons contributed by the community.
 
-IPFS works the way that the more hosts pin a object, the more resilient that
-object becomes. By providing a starting point for open hosting of this object,
+IPFS works the way that the more hosts pin a hash, the more resilient that
+hash becomes. By providing a starting point for open hosting of these hashes,
 I hope that we can share more resources with each others.
 
-All in a very open and introspectively way.
+All in a very open and transparent way.
+
+### Installation
+
+Easiest is to use docker to run OpenIPFS in your own network.
+
+* `docker pull victorbjelkholm/openipfs`
+
+* `docker run -d -p your_port:3000 victorbjelkholm/openipfs`
+
+Replace `your_port` with the port you want the WebUI to be available on.
+
+It'll take a few seconds for the server to boot after running `docker run`, so
+just hang tight for a while before loading...
 
 ### Screenshots
 
