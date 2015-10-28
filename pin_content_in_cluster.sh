@@ -29,14 +29,32 @@ TO_PIN=(
 'QmNNsxvnvSgpCCWDAtnkvJ2CRi1taQGDWL3gAt9JzPSWX4'
 'QmVFqqVw1iBwoVFA8PPTeN3FR6kkVWqmnthgKFiVDe3AVr'
 'QmTmtDi6fYjaZ1N9AC3SB3VkqdAkCp6nCqS3nncSmzGXK6'
+'QmfVBTXAFMua7JcHNkG2Bt5m5L2UPjMn9wiEFdxrnpdWjB'
+'QmaTrmJeHvucKdtZN6ttb53vsUXSaLfocono4dFFMgJxCs'
+'QmSNSm1gCv8mHjapPTQRuCJVWyabredCcUUnNDmp6pYrLs'
+'QmUWgc1vokX7WJREe5tbe7bP1uQtdDiwHgRWQrLDNYip49'
+'QmWAatTSa5CU3yzio15p47jGrwW4dPDfSHCkrLjFjPs75s'
+'QmPXHtwCheXJ7fRFv9DTA3UaRHr59v1D4XrdR9KWa9HfR2'
+'QmXeBjJ9gdJ1gQ8sXg1A6BNeL2fsmv5rPAq6uxj9hynsY4'
+'QmdcdMwNVAi1jr1hwnKCnp3dJsHcaZyGgwWrEARTNMVeXd'
+'QmazRLjjzLYDnxVMEMEmKd5w8KxYMyaQ3wMakLcz5iKyNc'
+'QmchUpLRQxTTvdG75K9HxMRfdgQ1cbv2rHnorEbjkRrbXB'
+'QmbkawJipe5MFVDtpCGrG75y59Ancq6UYSorHfoyGhUJ43'
+'QmVu51NWMctz5MV1cLnR2SmUeYZy7nSVQiKHsLQ1fzDkzk'
+'QmY6anJVKjChjxnjXdSZVGqKGoYmM1xgcLzkLT1613Sjw7'
 );
+
+# Debug
+# HOST="localhost:3000"
+# Production
+HOST="openipfs.xyz"
 
 
 for i in ${TO_PIN[@]}; do
   	RND_NUM=0.$[ 1 + $[ RANDOM % 100 ]]
 	echo "Pinning $i in $RND_NUM"
 	sleep $RND_NUM
-	curl --silent -X POST http://localhost:3000/api/pin/$i > /dev/null
+	curl --silent -X POST http://$HOST/api/pin/$i > /dev/null
 done
 
 echo "Done pinning!"
