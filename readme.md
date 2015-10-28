@@ -19,6 +19,14 @@ I hope that we can share more resources with each others.
 
 All in a very open and transparent way.
 
+### Contributing
+
+There are mainly three ways you can contribute.
+
+1. Donate money to people willing to hosts node. As project owner, I'm willing to host nodes in location of your chosing, and manage the node for use in OpenIPFS. Donate via Bitcoin `1MFZHmG3HAtQLHv3yvRn5VWRmF1Aa7u8FC` or Paypal `victorbjelkholm+paypal@gmail.com` and open an issue about your donation, so I can tell you the progress of setting up the node for OpenIPFS.
+2. You can manage your own node and copy-paste the public multiaddr directly in http://openipfs.xyz/nodes/add. You'll need to set the API config in ~/.ipfs/config to listen to 0.0.0.0. Better security will come in the future.
+3. Third way of contributing is to help with the software behind OpenIPFS. There are two parts, the backend that does polling of the nodes and sends API requests to the connected nodes, and the frontend which is a redux applicaiton.
+
 ### Installation
 
 Easiest is to use docker to run OpenIPFS in your own network.
