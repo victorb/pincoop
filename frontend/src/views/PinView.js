@@ -42,7 +42,7 @@ class PinView extends React.Component {
 				<h3>Developer?</h3>
 				<p>
 					If you rather use the API to pin content,<br/>
-					take a look at <a href="#">the API documentation</a>
+					take a look at <a href="https://github.com/VictorBjelkholm/openipfs/wiki/API-Documentation">the API documentation</a>
 				</p>
 			</div>
 		</div>
