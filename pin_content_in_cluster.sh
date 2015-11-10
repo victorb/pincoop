@@ -47,7 +47,7 @@ TO_PIN=(
 # Debug
 # HOST="localhost:3000"
 # Production
-HOST="openipfs.xyz"
+HOST="pincoop.xyz"
 
 
 for i in ${TO_PIN[@]}; do

@@ -28,7 +28,7 @@ do
 	echo "#$NUM have multiaddr $MULTIADDR"
 	MULTIADDRS=("${MULTIADDRS[@]}" "$MULTIADDR")
 
-	echo "Adding $MULTIADDR to OpenIPFS"
+	echo "Adding $MULTIADDR to PinCoop"
 	curl -X POST --silent localhost:3000/api/daemons -H "Content-Type: application/json" --data '{"multiaddr":"'$MULTIADDR'"}' > /dev/null
 	sleep 1
 done

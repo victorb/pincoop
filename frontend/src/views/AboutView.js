@@ -22,12 +22,12 @@ class AboutView extends React.Component {
 					Contribute a node to rehost content or donate money for others to handle the maintaince. Either way, you help us build a permanent web.
 				</p>
 				<p>
-					More information can be found in <a href="https://github.com/VictorBjelkholm/openipfs/wiki">the Github Wiki</a> or at <a href="https://github.com/VictorBjelkholm/openipfs">the source itself</a>.
+					More information can be found in <a href="https://github.com/VictorBjelkholm/pincoop/wiki">the Github Wiki</a> or at <a href="https://github.com/VictorBjelkholm/pincoop">the source itself</a>.
 				</p>
 				<p>
-					OpenIPFS was built and is maintained by<br/>
+					PinCoop was built and is maintained by<br/>
 					Victor Bjelkholm (<a href="https://twitter.com/victorbjelkholm">Twitter</a>, <a href="shttps://github.com/victorbjelkholm">Github</a>)<br/>
-					and a group of <a href="https://github.com/VictorBjelkholm/openipfs/graphs/contributors">contributers</a>
+				and a group of <a href="https://github.com/VictorBjelkholm/pincoop/graphs/contributors">contributers</a>
 				</p>
 			</div>
 		</div>

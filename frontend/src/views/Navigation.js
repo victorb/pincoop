@@ -6,7 +6,7 @@ const routes = {
 	'Nodes': '/nodes',
 	'Add your node': '/nodes/add',
 	'About': '/about',
-	'Source': 'https://github.com/victorbjelkholm/openipfs',
+	'Source': 'https://github.com/victorbjelkholm/pincoop',
 }
 
 class Navigation extends React.Component {
@@ -25,7 +25,7 @@ class Navigation extends React.Component {
 		})
 		return <div className="navigation">
 			<div className="brand">
-				<a href="/pins">OpenIPFS</a>
+				<a href="/pins">PinCoop</a>
 				<span className="beta">BETA</span>
 			</div>
 			<div className="links">

@@ -1,11 +1,11 @@
-## OpenIPFS
+## PinCoop
 
 DISCLAIMER: This project is in Beta stage and hugely unstable. Installation
 without docker is not guaranteed to succeed. Use at your own risk
 
 ### Introduction
 
-OpenIPFS is a set of API endpoints and WebUI for adding public daemons, retrieve a list
+PinCoop is a set of API endpoints and WebUI for adding public daemons, retrieve a list
 of all of them and to add hashes to be pinned on those public daemons.
 
 ### Goal
@@ -23,17 +23,17 @@ All in a very open and transparent way.
 
 There are mainly three ways you can contribute.
 
-1. Donate money to people willing to hosts node. As project owner, I'm willing to host nodes in a location of your chosing, and manage the node for use in OpenIPFS. Donate via Bitcoin `1MFZHmG3HAtQLHv3yvRn5VWRmF1Aa7u8FC` or Paypal `victorbjelkholm+paypal@gmail.com` and open an issue about your donation, so I can tell you the progress of setting up the node for OpenIPFS.
-2. You can manage your own node and copy-paste the public multiaddr directly in http://openipfs.xyz/nodes/add. You'll need to set the API config in ~/.ipfs/config to listen to 0.0.0.0. Better security will come in the future.
-3. Third way of contributing is to help with the software behind OpenIPFS. There are two parts, the backend that does polling of the nodes and sends API requests to the connected nodes, and the frontend which is a redux applicaiton.
+1. Donate money to people willing to hosts node. As project owner, I'm willing to host nodes in a location of your chosing, and manage the node for use in PinCoop. Donate via Bitcoin `1MFZHmG3HAtQLHv3yvRn5VWRmF1Aa7u8FC` or Paypal `victorbjelkholm+paypal@gmail.com` and open an issue about your donation, so I can tell you the progress of setting up the node for PinCoop.
+2. You can manage your own node and copy-paste the public multiaddr directly in http://pincoop.xyz/nodes/add. You'll need to set the API config in ~/.ipfs/config to listen to 0.0.0.0. Better security will come in the future.
+3. Third way of contributing is to help with the software behind PinCoop. There are two parts, the backend that does polling of the nodes and sends API requests to the connected nodes, and the frontend which is a redux application.
 
 ### Installation
 
-Easiest is to use docker to run OpenIPFS in your own network.
+Easiest is to use docker to run PinCoop in your own network.
 
-* `docker pull victorbjelkholm/openipfs`
+* `docker pull victorbjelkholm/pincoop`
 
-* `docker run -d -p your_port:3000 victorbjelkholm/openipfs`
+* `docker run -d -p your_port:3000 victorbjelkholm/pincoop`
 
 Replace `your_port` with the port you want the WebUI to be available on.
 

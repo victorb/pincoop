@@ -1,5 +1,5 @@
 {
-  "name": "openipfs",
+  "name": "pincoop",
   "version": "1.0.0",
   "description": "Share your files with the world, host the world's files",
   "main": "api.js",

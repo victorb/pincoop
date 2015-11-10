@@ -45,7 +45,7 @@ class NodesAddView extends React.Component {
 				<h3>How to setup?</h3>
 				<p>
 					If you want to more about how to run the node to be able to
-					support OpenIPFS, take a look at <a href="https://github.com/VictorBjelkholm/openipfs/wiki/Node-Setup-Guide">the node setup guide</a>
+					support PinCoop, take a look at <a href="https://github.com/VictorBjelkholm/pincoop/wiki/Node-Setup-Guide">the node setup guide</a>
 				</p>
 			</div>
 		</div>
